@@ -73,6 +73,7 @@ function App() {
     <Routes>
 <Route path='/' element={<Home2/>}></Route>
 <Route path='/services' element={<Services/>}/>
+ <Route path='/mobilestock' element={<MobileStock/>}/>
   <Route path='/aboutus' element={<AboutUs/>}/>
   <Route path='/futureplans' element={<FuturePlans/>}/>
   <Route path='/contactus' element={<ContactUs/>}/>
@@ -80,6 +81,7 @@ function App() {
     <Route path='/admin' element={<AdminPanel/>}>
     <Route path='/admin/' element={<MobileStock/>}/>
     <Route path='/admin/uploadpost' element={<UploadPost/>}/>
+    
     </Route>
 
       {/* <Route path='/' element={<Home/>}></Route>
@@ -91,7 +93,7 @@ function App() {
  <Route path='/uploadPost' element={<UploadPost/>}/>
            
  <Route path='/CurrentStock' element={<CurrentStock/>}/>
- <Route path='/MobileStock' element={<MobileStock/>}/> */}
+ */}
  
  
   </Routes>

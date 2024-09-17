@@ -4,13 +4,13 @@ import { NavLink } from 'react-router-dom';
 
 const CardSlider = () => {
 
-  let data = [{text:'Future Plans',image:"future-growth-plan.webp",link:"/futureplans"},{text:'About us',image:"about-us.jpg",link:"/aboutus"},{text:'Services',image:"services.png",link:"/services"},{text:'Contact us',image:"contact-4.jpg",link:"/contactus"},{text:'Products',image:"phone.webp",link:"/admin"}]
+  let data = [{text:'Future Plans',image:"future-growth-plan.webp",link:"/mobilestock"},{text:'About us',image:"about-us.jpg",link:"/aboutus"},{text:'Services',image:"services.png",link:"/services"},{text:'Contact us',image:"contact-4.jpg",link:"/contactus"},{text:'Products',image:"phone.webp",link:"/admin"}]
  
 
   return (
    <>
       
-<div className="relative overflow-x-scroll w-full mt-4 hide-scrollbar pl-5" >
+<div className="relative overflow-x-scroll w-full mt-4 hide-scrollbar pl-5">
   <div className="flex w-max">
         {data.map(obj=>(
            
@@ -21,7 +21,7 @@ const CardSlider = () => {
         </div> </NavLink>
 
         ))}
-      </div>  </div>
+      </div></div>
     </>
      
    
@@ -29,3 +29,7 @@ const CardSlider = () => {
 };
 
 export default CardSlider;
+
+
+
+ 
