@@ -76,12 +76,12 @@ function App() {
   <Route path='/aboutus' element={<AboutUs/>}/>
   <Route path='/futureplans' element={<FuturePlans/>}/>
   <Route path='/contactus' element={<ContactUs/>}/>
-      
+      <Route path='/seeposts' element={<SeePost/>}/>
     <Route path='/admin' element={<AdminPanel/>}>
     <Route path='/admin/' element={<MobileStock/>}/>
     <Route path='/admin/uploadpost' element={<UploadPost/>}/>
     </Route>
-  {/* <Route path='/seePost' element={<SeePost/>}/> */}
+
       {/* <Route path='/' element={<Home/>}></Route>
       <Route path="/" element={<VerticalNav/>}>
       
@@ -101,3 +101,4 @@ function App() {
 }
 
 export default App
+

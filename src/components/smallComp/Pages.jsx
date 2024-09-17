@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 function Pages({pText=""}) {
   return (
-    <NavLink to={'/'} className='flex flex-col justify-center items-center w-1/5 h-full dark:text-slate-600'>
+    <NavLink to={'/seeposts'} className='flex flex-col justify-center items-center w-1/5 h-full dark:text-slate-600'>
       <FontAwesomeIcon icon={faFile} />
       <p className='text-xs'>{pText && pText}</p>
     </NavLink >
