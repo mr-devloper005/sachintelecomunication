@@ -1,0 +1,6 @@
+/* HamburgerMenu.css */
+
+/* Side navigation transitions */
+.backdrop-blur-sm {
+  backdrop-filter: blur(10px);
+}

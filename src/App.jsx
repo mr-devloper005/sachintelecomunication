@@ -19,6 +19,9 @@ import NavigationBar from './components/ui-components/NavigationBar'
 import FuturePlans from './components/pages/FuturePlans'
 import ContactUs from './components/pages/ContactUs'
 import AdminPanel from './components/ui-components/admin/AdminPanel'
+import HamburgerMenu from './components/ui-components/HamburgerMenu'
+import Missions from './components/ui-components/Missions'
+import AdminPass from './components/ui-components/admin/AdminPass'
 
 
 // function App() {
@@ -67,16 +70,27 @@ function App() {
 
   // const isHomePage = location.pathname === '/';
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(prev => !prev);
+  };
+ 
   return (
-    <div className={`min-h-screen w-full  bg-gray-300 dark:bg-black`} >
+    <div className={`min-h-screen w-full  bg-gray-300 dark:bg-black`}>
+
+<HamburgerMenu isOpen={menuOpen} toggleMenu={setMenuOpen} />
 
     <Routes>
-<Route path='/' element={<Home2/>}></Route>
+<Route path='/' element={<Home2 menu={toggleMenu} />}></Route>
 <Route path='/services' element={<Services/>}/>
+<Route path='/adminpass' element={<AdminPass/>}/>
  <Route path='/mobilestock' element={<MobileStock/>}/>
   <Route path='/aboutus' element={<AboutUs/>}/>
   <Route path='/futureplans' element={<FuturePlans/>}/>
+  <Route path='/products' element={<CurrentStock/>}/>
   <Route path='/contactus' element={<ContactUs/>}/>
+  <Route path='/missions' element={<Missions/>}/>
       <Route path='/seeposts' element={<SeePost/>}/>
     <Route path='/admin' element={<AdminPanel/>}>
     <Route path='/admin/' element={<MobileStock/>}/>
@@ -97,7 +111,7 @@ function App() {
  
  
   </Routes>
-<NavigationBar/>
+<NavigationBar menu={toggleMenu}/>
   </div>
   )
 }

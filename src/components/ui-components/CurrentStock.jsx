@@ -146,6 +146,8 @@ function CurrentStock() {
           if (item.fileId) {
             // Generate a direct URL for the file
             const fileURL = storage.getFileView("66ccad43002d4b8e7360", item.fileId);
+            console.log(item);
+            
             
             // Return a new object with all original data and the image URL
             return { ...item, imageUrl: fileURL };
@@ -190,31 +192,68 @@ function CurrentStock() {
 
 
 
-<div className='w-full min-h-screen bg-gray-200 p-5'>
-  <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2'> {/* gap-2 for spacing */}
+// <div className='w-full min-h-screen bg-gray-200 p-5'>
+// <h1 className='font-bold text-center text-4xl'>Products</h1>
+
+//   <div className='grid mt-5 grid-cols-1 h-96 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2'> {/* gap-2 for spacing */}
+//     {dataWithImages.map((item) => (
+//       <div key={item.$id} className='bg-white rounded-lg h-96 w-full'>
+//         {item.imageUrl ? (
+//           <img src={item.imageUrl} className='h-60 w-full rounded-lg' alt={item.Modelname} />
+//         ) : (
+//           <div className=' w-full bg-gray-300 rounded-lg flex items-center justify-center'>
+//             <span>No Image</span>
+//           </div>
+//         )}
+// <div className='p-4 h-40  grid grid-cols-2 gap-4'> {/* 2 columns with gap */}
+//   <span className='block'>Price: {item.price}</span>
+//   <span className='block'>Model: {item.Modelname}</span>
+//   <span className='block pt-1 bg-gray-300 w-32 pl-4 rounded-xl items-center justify-center'> {item.spec1}</span>
+//   <span className='block pt-1 bg-gray-300 w-32 pl-4 rounded-xl items-center justify-center'> {item.spec2}</span>
+//   <span className='block pt-1 bg-gray-300 w-32 pl-4 rounded-xl items-center justify-center'> {item.spec3}</span>
+//   <span className='block pt-1 bg-gray-300 w-32 pl-4 rounded-xl items-center justify-center'>  {item.spec4}</span>
+// </div>
+
+
+//       </div>
+//     ))} 
+//   </div>
+// </div>
+
+
+<div className='w-full min-h-screen dark:bg-black bg-gray-200 p-5'>
+  <h1 className='font-bold text-center text-4xl mb-5'>Products</h1>
+
+  <div className='grid mt-5 grid-cols-1 h-auto sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
     {dataWithImages.map((item) => (
-      <div key={item.$id} className='bg-white rounded-lg h-96 w-full'>
+      <div key={item.$id} className='bg-white dark:bg-zinc-900 rounded-lg shadow-md overflow-hidden'>
         {item.imageUrl ? (
-          <img src={item.imageUrl} className='h-52 w-full rounded-lg' alt={item.Modelname} />
+          <img
+            src={item.imageUrl}
+            className='h-72 w-full object-cover' // Adjusted height for better visibility
+            alt={item.ModelName}
+          />
         ) : (
-          <div className=' w-full bg-gray-300 rounded-lg flex items-center justify-center'>
+          <div className='h-80 w-full bg-gray-300 flex items-center justify-center'>
             <span>No Image</span>
           </div>
         )}
-<div className='p-4 h-40  grid grid-cols-2 gap-4'> {/* 2 columns with gap */}
-  <span className='block'>Price: {item.price}</span>
-  <span className='block'>Model: {item.Modelname}</span>
-  <span className='block pt-1 bg-gray-500 w-32 pl-4 rounded-xl items-center justify-center'> {item.spec1}</span>
-  <span className='block pt-1 bg-gray-500 w-32 pl-4 rounded-xl items-center justify-center'> {item.spec2}</span>
-  <span className='block pt-1 bg-gray-500 w-32 pl-4 rounded-xl items-center justify-center'> {item.spec3}</span>
-  <span className='block pt-1 bg-gray-500 w-32 pl-4 rounded-xl items-center justify-center'>  {item.spec4}</span>
-</div>
-
-
+        <div className='p-4 dark:text-white'>
+          <h2 className='text-xl font-semibold mb-2'>{item.ModelName}</h2> {/* Added margin */}
+          <div className='grid grid-cols-2 gap-4'>
+            <span className='block'>Price: {item.price}</span>
+            <span className='block'>Model: {item.ModelName}</span>
+            <span className='block pt-1 dark:bg-gray-600 bg-gray-300 w-full rounded-xl p-2'>{item.spec1}</span>
+            <span className='block pt-1 dark:bg-gray-600 bg-gray-300 w-full rounded-xl p-2'>{item.spec2}</span>
+            <span className='block pt-1 dark:bg-gray-600 bg-gray-300 w-full rounded-xl p-2'>{item.spec3}</span>
+            <span className='block pt-1 dark:bg-gray-600 bg-gray-300 w-full rounded-xl p-2'>{item.spec4}</span>
+          </div>
+        </div>
       </div>
-    ))} 
+    ))}
   </div>
 </div>
+
 
 
   );

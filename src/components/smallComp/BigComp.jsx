@@ -7,7 +7,7 @@ function BigComp({h="h-1/3",
   Heading,
   description,
   link
-  }) {
+  }){
   return (
     <div  className={`w-full  flex justify-center items-center  gap-10`} >
       <img src={imageLink} alt="" className='h-36 w-1/3 sm:w-64'/>

@@ -181,7 +181,103 @@
 // export default SeePost;
 
 
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
+// import { Client, Storage, Databases } from 'appwrite';
+
+// function SeePost() {
+//   const client = new Client();
+//   client.setEndpoint("https://cloud.appwrite.io/v1").setProject("66bc1d290020c462b668");
+
+//   const databases = new Databases(client);
+//   const storage = new Storage(client);
+
+//   const [data, setData] = useState([]);
+//   const [videoUrl, setVideoUrl] = useState('');
+//   const [currentIndex, setCurrentIndex] = useState(0);
+//   const [touchStartY, setTouchStartY] = useState(0);
+
+//   // Step 1: Fetch Data from Database
+//   useEffect(() => {
+//     async function fetchData() {
+//       try {
+//         let response = await databases.listDocuments("66bc1d7b002d58cc9878", "66c6050b001d93c50215");
+//         setData(response.documents); // Store documents
+//       } catch (e) {
+//         console.error("Error in fetching data", e);
+//       }
+//     }
+//     fetchData();
+//   }, []);
+
+//   // Step 2: Fetch Video File from Storage
+//   useEffect(() => {
+//     async function fetchFile() {
+//       if (data.length > 0) {
+//         try {
+//           const currentFileId = data[currentIndex].fileId; // Get fileId from the current document
+//           let response = await storage.getFileView('66c595cc00017a8688f3', currentFileId);
+//           setVideoUrl(response.href); // Set the video URL
+//         } catch (e) {
+//           console.error("Error in fetching file", e);
+//         }
+//       }
+//     }
+//     fetchFile();
+//   }, [currentIndex, data]);
+
+//   const handleTouchStart = (e) => {
+//     setTouchStartY(e.touches[0].clientY);
+//   };
+
+//   const handleTouchEnd = (e) => {
+//     const touchEndY = e.changedTouches[0].clientY;
+//     const distanceY = touchEndY - touchStartY;
+
+//     if (Math.abs(distanceY) > 50) {
+//       if (distanceY > 0) {
+//         setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
+//       } else {
+//         setCurrentIndex((prevIndex) => (prevIndex < data.length - 1 ? prevIndex + 1 : prevIndex));
+//       }
+//     }
+//   };
+
+//   return (
+//     <div
+//       style={{ height: '100vh', overflow: 'hidden' }}
+//       onTouchStart={handleTouchStart}
+//       onTouchEnd={handleTouchEnd}
+//     >
+//       {data.length > 0 && videoUrl ? (
+//         <div>
+//           <h1>{data[currentIndex].title}</h1>
+//           <p>{data[currentIndex].description}</p>
+//           <video
+//             key={currentIndex}
+//             width="100%"
+//             height="100%"
+//             controls
+//             autoPlay
+//             loop
+//             muted
+//             style={{ objectFit: 'cover' }}
+//           >
+//             <source src={videoUrl} type="video/mp4" />
+//             Your browser does not support the video tag.
+//           </video>
+//         </div>
+//       ) : (
+//         <p>Loading...</p>
+//       )}
+//     </div>
+//   );
+// }
+
+// export default SeePost;
+
+
+
+import React, { useEffect, useState,useRef } from 'react';
 import { Client, Storage, Databases } from 'appwrite';
 
 function SeePost() {
@@ -196,12 +292,11 @@ function SeePost() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStartY, setTouchStartY] = useState(0);
 
-  // Step 1: Fetch Data from Database
   useEffect(() => {
     async function fetchData() {
       try {
         let response = await databases.listDocuments("66bc1d7b002d58cc9878", "66c6050b001d93c50215");
-        setData(response.documents); // Store documents
+        setData(response.documents);
       } catch (e) {
         console.error("Error in fetching data", e);
       }
@@ -209,14 +304,13 @@ function SeePost() {
     fetchData();
   }, []);
 
-  // Step 2: Fetch Video File from Storage
   useEffect(() => {
     async function fetchFile() {
       if (data.length > 0) {
         try {
-          const currentFileId = data[currentIndex].fileId; // Get fileId from the current document
+          const currentFileId = data[currentIndex].fileId;
           let response = await storage.getFileView('66c595cc00017a8688f3', currentFileId);
-          setVideoUrl(response.href); // Set the video URL
+          setVideoUrl(response.href);
         } catch (e) {
           console.error("Error in fetching file", e);
         }
@@ -242,30 +336,42 @@ function SeePost() {
     }
   };
 
+  const videoRef = useRef(null);
+
+  const togglePlayPause = () => {
+    if (videoRef.current.paused) {
+      videoRef.current.play();
+    } else {
+      videoRef.current.pause();
+    }
+  };
+
   return (
-    <div
+    <div className='flex flex-col justify-center items-center'
       style={{ height: '100vh', overflow: 'hidden' }}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
       {data.length > 0 && videoUrl ? (
-        <div>
-          <h1>{data[currentIndex].title}</h1>
-          <p>{data[currentIndex].description}</p>
+        <>
           <video
+          ref={videoRef}
             key={currentIndex}
             width="100%"
             height="100%"
-            controls
             autoPlay
             loop
-            muted
+            onClick={togglePlayPause}
             style={{ objectFit: 'cover' }}
           >
             <source src={videoUrl} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-        </div>
+          <div className="absolute bottom-10 left-0 right-0 p-4 text-black dark:text-white">
+            <h1 className='text-2xl font-bold'>{data[currentIndex].title}</h1>
+            <p className='mt-2'>{data[currentIndex].description}</p>
+          </div>
+        </>
       ) : (
         <p>Loading...</p>
       )}
@@ -275,5 +381,105 @@ function SeePost() {
 
 export default SeePost;
 
+// import React, { useEffect, useState, useRef } from 'react';
+// import { Client, Storage, Databases } from 'appwrite';
 
+// function SeePost() {
+//   const client = new Client();
+//   client.setEndpoint("https://cloud.appwrite.io/v1").setProject("66bc1d290020c462b668");
 
+//   const databases = new Databases(client);
+//   const storage = new Storage(client);
+
+//   const [data, setData] = useState([]);
+//   const [videoUrl, setVideoUrl] = useState('');
+//   const [currentIndex, setCurrentIndex] = useState(0);
+//   const [touchStartY, setTouchStartY] = useState(0);
+//   const videoRef = useRef(null);
+
+//   useEffect(() => {
+//     async function fetchData() {
+//       try {
+//         const response = await databases.listDocuments("66bc1d7b002d58cc9878", "66c6050b001d93c50215");
+//         setData(response.documents);
+//       } catch (e) {
+//         console.error("Error in fetching data", e);
+//       }
+//     }
+//     fetchData();
+//   }, []);
+
+//   useEffect(() => {
+//     async function fetchFile() {
+//       if (data.length > 0) {
+//         try {
+//           const currentFileId = data[currentIndex].fileId;
+//           const response = await storage.getFileView('66c595cc00017a8688f3', currentFileId);
+//           setVideoUrl(response.href);
+//         } catch (e) {
+//           console.error("Error in fetching file", e);
+//         }
+//       }
+//     }
+//     fetchFile();
+//   }, [currentIndex, data]);
+
+//   const handleTouchStart = (e) => {
+//     setTouchStartY(e.touches[0].clientY);
+//   };
+
+//   const handleTouchEnd = (e) => {
+//     const touchEndY = e.changedTouches[0].clientY;
+//     const distanceY = touchEndY - touchStartY;
+
+//     if (Math.abs(distanceY) > 50) {
+//       if (distanceY < 0 && currentIndex < data.length - 1) {
+//         // Swipe up to go to the next video
+//         setCurrentIndex((prevIndex) => prevIndex + 1);
+//       } else if (distanceY > 0 && currentIndex > 0) {
+//         // Swipe down to go to the previous video
+//         setCurrentIndex((prevIndex) => prevIndex - 1);
+//       }
+//     }
+//   };
+
+//   return (
+//     <div
+//       style={{ height: '100vh', overflow: 'hidden', position: 'relative' }}
+//       onTouchStart={handleTouchStart}
+//       onTouchEnd={handleTouchEnd}
+//     >
+//       {data.length > 0 && videoUrl ? (
+//         <>
+//           <video
+//             ref={videoRef}
+//             width="100%"
+//             height="100%"
+//             autoPlay
+//             loop
+//             muted
+//             style={{ objectFit: 'cover', display: 'block' }}
+//             onClick={() => {
+//               if (videoRef.current.paused) {
+//                 videoRef.current.play();
+//               } else {
+//                 videoRef.current.pause();
+//               }
+//             }}
+//           >
+//             <source src={videoUrl} type="video/mp4" />
+//             Your browser does not support the video tag.
+//           </video>
+//           <div className="absolute left-0 right-0 bottom-10 flex flex-col items-center text-white">
+//             <h1 className='text-xl font-bold text-center'>{data[currentIndex].title}</h1>
+//             <p className='mt-1 text-sm text-center'>{data[currentIndex].description}</p>
+//           </div>
+//         </>
+//       ) : (
+//         <p>Loading...</p>
+//       )}
+//     </div>
+//   );
+// }
+
+// export default SeePost;

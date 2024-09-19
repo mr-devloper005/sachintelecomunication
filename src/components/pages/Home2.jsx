@@ -10,18 +10,19 @@ import { faStar} from '@fortawesome/free-solid-svg-icons';
 import BigComp from '../smallComp/BigComp'
 import Footer from '../ui-components/Footer'
 
-function Home2() {
+function Home2({menu}) {
 let barProps = {
   bg:"bg-white",
-  darkBg:'text-black'
+  darkBg:'text-black',
+  toggleMenu:menu
 }
 
 let array=[
   {
-  smallHeading:"Bright Missions",
-   Heading:"Missions",
+  smallHeading:"Bright vission",
+   Heading:"Vission",
    description:" We have set ambitious goals to expand our reach, enhance our services, and continue being the leading mobile technology provider in Alwar District.",
-   link:"/services",
+   link:"/missions",
    imageLink:"success.webp"
  
  },{
@@ -37,14 +38,14 @@ let array=[
   smallHeading:"Our Product Range",
    Heading:"Products",
    description:"We provide a comprehensive range of products, starting with mobile phones and extending to all related accessories.",
-   link:"/seepost",
+   link:"/admin",
    imageLink:"apple.webp"
  
  }]
 
 
   return (
- <div id="main" className='min-h-screen pb-10 flex flex-col gap-3'  >
+ <div id="main" className='min-h-screen pb-10 flex flex-col gap-3'>
 
 <div id="Top-bar" className='flex h-14 max-w-1/2 justify-between px-3 gap-2  mt-3 items-center '> 
    <Logo/> <div className='flex gap-5 mr-3'> <Share/> <DarkLightIcon/> <Bars {...barProps} /> </div></div>
@@ -52,7 +53,7 @@ let array=[
 
 <div id="cards"><CardSlider/></div>
 
-<div id='star-div' className='relative flex h-40 w-full mt-6 justify-center px-3 items-center ' >
+<div id='star-div' className='relative flex h-40 w-full mt-6 justify-center px-3 items-center' >
   <div className='w-full h-full rounded-xl p-3 bg-white dark:bg-zinc-900'>
     <p className='text-blue-600 font-bold'>A complete Solution</p>
     <p className='text-3xl text-black dark:text-white font-bold'>Sachin Telecommunication</p>
