@@ -34,7 +34,7 @@ function HamburgerMenu({ isOpen, toggleMenu }) {
                 Services
               </NavLink>
               <NavLink onClick={()=>{toggleMenu(prev=>!prev)}} to="/products" className="text-black dark:text-white bg-white  dark:bg-zinc-900 h-12 w-full rounded-xl flex justify-center items-center">
-                Mobile Stock
+               Products
               </NavLink>
               <NavLink onClick={()=>{toggleMenu(prev=>!prev)}} to="/aboutus" className="text-black dark:text-white bg-white  dark:bg-zinc-900 h-12 w-full rounded-xl flex justify-center items-center">
                 About Us
@@ -46,11 +46,11 @@ function HamburgerMenu({ isOpen, toggleMenu }) {
                 Contact Us
               </NavLink>
               <NavLink onClick={()=>{toggleMenu(prev=>!prev)}} to="/seeposts" className="text-black dark:text-white bg-white  dark:bg-zinc-900 h-12 w-full rounded-xl flex justify-center items-center">
-                See Posts
+                Posts
               </NavLink>
 
-              <NavLink onClick={()=>{toggleMenu(prev=>!prev)}} to="/contactus" className="text-black dark:text-white bg-white  dark:bg-zinc-900 h-12 w-full rounded-xl flex justify-center items-center">
-                Contact Us
+              <NavLink onClick={()=>{toggleMenu(prev=>!prev)}} to="/missions" className="text-black dark:text-white bg-white  dark:bg-zinc-900 h-12 w-full rounded-xl flex justify-center items-center">
+                Vission
               </NavLink>
               <NavLink onClick={()=>{toggleMenu(prev=>!prev)}} to="/adminpass" className="text-black dark:text-white bg-white  dark:bg-zinc-900 h-12 w-full rounded-xl flex justify-center items-center">
                 Admin

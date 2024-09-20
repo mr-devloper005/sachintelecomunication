@@ -38,7 +38,7 @@ let array=[
   smallHeading:"Our Product Range",
    Heading:"Products",
    description:"We provide a comprehensive range of products, starting with mobile phones and extending to all related accessories.",
-   link:"/admin",
+   link:"/products",
    imageLink:"apple.webp"
  
  }]

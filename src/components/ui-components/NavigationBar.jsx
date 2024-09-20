@@ -17,8 +17,7 @@ function NavigationBar({menu}) {
   return (
     <div className='bg-white bg-opacity-90 w-full sticky  h-14 border-y-2 dark:bg-zinc-950  flex justify-evenly items-center  bottom-0 border-gray-500' >
       <Features pText="Products"/>
-      <Pages pText="pages"/>
-     
+      <Pages pText="Vission"/>
       <HomeIcon pText="Home"/>
       <Projects pText="Posts"/>
       <Bars {...barStyles} />
