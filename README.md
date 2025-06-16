@@ -1,8 +1,26 @@
-# React + Vite
+# 📡 Sachin Telecommunication Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive, and user-friendly **informational website** built using **React JS** for **Sachin Telecommunication**. The site highlights company services, future goals, and general information — designed to be clean, accessible, and scalable with reusable components.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Built With
+
+- ⚛️ React JS
+- 💨 Tailwind CSS (or your CSS framework)
+- 🧱 Reusable Components
+- 💡 Functional Components & Hooks
+
+---
+
+## 📌 Features
+
+- 🔹 Modern UI with a clean layout
+- 🔹 Fully responsive design
+- 🔹 Structured reusable component system
+- 🔹 Fast and lightweight
+- 🔹 Easy to extend and maintain
+
+---
+
+
